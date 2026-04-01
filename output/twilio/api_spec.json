@@ -1,0 +1,1177 @@
+{
+  "service_name": "twilio-api",
+  "base_url": "https://api.twilio.com",
+  "auth_type": "basic",
+  "auth_header_format": "Basic {base64(user:pass)}",
+  "env_vars_needed": [
+    "TWILIO_API_URL",
+    "TWILIO_API_TOKEN"
+  ],
+  "endpoints": [
+    {
+      "method": "GET",
+      "path": "/2010-04-01/Accounts.json",
+      "summary": "Retrieves a collection of Accounts belonging to the account used to make the request",
+      "tags": [],
+      "parameters": [
+        {
+          "name": "FriendlyName",
+          "in": "query",
+          "required": false,
+          "description": "Only return the Account resources with friendly names that exactly match this name."
+        },
+        {
+          "name": "Status",
+          "in": "query",
+          "required": false,
+          "description": "Only return Account resources with the given status. Can be `closed`, `suspended` or `active`."
+        },
+        {
+          "name": "PageSize",
+          "in": "query",
+          "required": false,
+          "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000."
+        },
+        {
+          "name": "Page",
+          "in": "query",
+          "required": false,
+          "description": "The page index. This value is simply for client state."
+        },
+        {
+          "name": "PageToken",
+          "in": "query",
+          "required": false,
+          "description": "The page token. This is provided by the API."
+        }
+      ],
+      "body_fields": [],
+      "operation_id": "ListAccount"
+    },
+    {
+      "method": "GET",
+      "path": "/2010-04-01/Accounts/{Sid}.json",
+      "summary": "Fetch the account specified by the provided Account Sid",
+      "tags": [],
+      "parameters": [
+        {
+          "name": "Sid",
+          "in": "path",
+          "required": true,
+          "description": "The Account Sid that uniquely identifies the account to fetch"
+        }
+      ],
+      "body_fields": [],
+      "operation_id": "FetchAccount"
+    },
+    {
+      "method": "GET",
+      "path": "/2010-04-01/Accounts/{AccountSid}/Keys.json",
+      "summary": "",
+      "tags": [],
+      "parameters": [
+        {
+          "name": "AccountSid",
+          "in": "path",
+          "required": true,
+          "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Key resources to read."
+        },
+        {
+          "name": "PageSize",
+          "in": "query",
+          "required": false,
+          "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000."
+        },
+        {
+          "name": "Page",
+          "in": "query",
+          "required": false,
+          "description": "The page index. This value is simply for client state."
+        },
+        {
+          "name": "PageToken",
+          "in": "query",
+          "required": false,
+          "description": "The page token. This is provided by the API."
+        }
+      ],
+      "body_fields": [],
+      "operation_id": "ListKey"
+    },
+    {
+      "method": "GET",
+      "path": "/2010-04-01/Accounts/{AccountSid}/Calls.json",
+      "summary": "Retrieves a collection of calls made to and from your account",
+      "tags": [],
+      "parameters": [
+        {
+          "name": "AccountSid",
+          "in": "path",
+          "required": true,
+          "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Call resource(s) to read."
+        },
+        {
+          "name": "To",
+          "in": "query",
+          "required": false,
+          "description": "Only show calls made to this phone number, SIP address, Client identifier or SIM SID."
+        },
+        {
+          "name": "From",
+          "in": "query",
+          "required": false,
+          "description": "Only include calls from this phone number, SIP address, Client identifier or SIM SID."
+        },
+        {
+          "name": "ParentCallSid",
+          "in": "query",
+          "required": false,
+          "description": "Only include calls spawned by calls with this SID."
+        },
+        {
+          "name": "Status",
+          "in": "query",
+          "required": false,
+          "description": "The status of the calls to include. Can be: `queued`, `ringing`, `in-progress`, `canceled`, `completed`, `failed`, `busy`, or `no-answer`."
+        },
+        {
+          "name": "StartTime",
+          "in": "query",
+          "required": false,
+          "description": "Only include calls that started on this date. Specify a date as `YYYY-MM-DD` in GMT, for example: `2009-07-06`, to read only calls that started on this date. You can also specify an inequality, such as `StartTime<=YYYY-MM-DD`, to read calls that started on or before midnight of this date, and `StartTime>=YYYY-MM-DD` to read calls that started on or after midnight of this date."
+        },
+        {
+          "name": "StartTime<",
+          "in": "query",
+          "required": false,
+          "description": "Only include calls that started on this date. Specify a date as `YYYY-MM-DD` in GMT, for example: `2009-07-06`, to read only calls that started on this date. You can also specify an inequality, such as `StartTime<=YYYY-MM-DD`, to read calls that started on or before midnight of this date, and `StartTime>=YYYY-MM-DD` to read calls that started on or after midnight of this date."
+        },
+        {
+          "name": "StartTime>",
+          "in": "query",
+          "required": false,
+          "description": "Only include calls that started on this date. Specify a date as `YYYY-MM-DD` in GMT, for example: `2009-07-06`, to read only calls that started on this date. You can also specify an inequality, such as `StartTime<=YYYY-MM-DD`, to read calls that started on or before midnight of this date, and `StartTime>=YYYY-MM-DD` to read calls that started on or after midnight of this date."
+        },
+        {
+          "name": "EndTime",
+          "in": "query",
+          "required": false,
+          "description": "Only include calls that ended on this date. Specify a date as `YYYY-MM-DD` in GMT, for example: `2009-07-06`, to read only calls that ended on this date. You can also specify an inequality, such as `EndTime<=YYYY-MM-DD`, to read calls that ended on or before midnight of this date, and `EndTime>=YYYY-MM-DD` to read calls that ended on or after midnight of this date."
+        },
+        {
+          "name": "EndTime<",
+          "in": "query",
+          "required": false,
+          "description": "Only include calls that ended on this date. Specify a date as `YYYY-MM-DD` in GMT, for example: `2009-07-06`, to read only calls that ended on this date. You can also specify an inequality, such as `EndTime<=YYYY-MM-DD`, to read calls that ended on or before midnight of this date, and `EndTime>=YYYY-MM-DD` to read calls that ended on or after midnight of this date."
+        },
+        {
+          "name": "EndTime>",
+          "in": "query",
+          "required": false,
+          "description": "Only include calls that ended on this date. Specify a date as `YYYY-MM-DD` in GMT, for example: `2009-07-06`, to read only calls that ended on this date. You can also specify an inequality, such as `EndTime<=YYYY-MM-DD`, to read calls that ended on or before midnight of this date, and `EndTime>=YYYY-MM-DD` to read calls that ended on or after midnight of this date."
+        },
+        {
+          "name": "PageSize",
+          "in": "query",
+          "required": false,
+          "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000."
+        },
+        {
+          "name": "Page",
+          "in": "query",
+          "required": false,
+          "description": "The page index. This value is simply for client state."
+        },
+        {
+          "name": "PageToken",
+          "in": "query",
+          "required": false,
+          "description": "The page token. This is provided by the API."
+        }
+      ],
+      "body_fields": [],
+      "operation_id": "ListCall"
+    },
+    {
+      "method": "GET",
+      "path": "/2010-04-01/Accounts/{AccountSid}/Queues.json",
+      "summary": "Retrieve a list of queues belonging to the account used to make the request",
+      "tags": [],
+      "parameters": [
+        {
+          "name": "AccountSid",
+          "in": "path",
+          "required": true,
+          "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Queue resources to read."
+        },
+        {
+          "name": "PageSize",
+          "in": "query",
+          "required": false,
+          "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000."
+        },
+        {
+          "name": "Page",
+          "in": "query",
+          "required": false,
+          "description": "The page index. This value is simply for client state."
+        },
+        {
+          "name": "PageToken",
+          "in": "query",
+          "required": false,
+          "description": "The page token. This is provided by the API."
+        }
+      ],
+      "body_fields": [],
+      "operation_id": "ListQueue"
+    },
+    {
+      "method": "GET",
+      "path": "/2010-04-01/Accounts/{AccountSid}/Balance.json",
+      "summary": "Fetch the balance for an Account based on Account Sid. Balance changes may not be reflected immediately. Child accounts do not contain balance information",
+      "tags": [],
+      "parameters": [
+        {
+          "name": "AccountSid",
+          "in": "path",
+          "required": true,
+          "description": "The unique SID identifier of the Account."
+        }
+      ],
+      "body_fields": [],
+      "operation_id": "FetchBalance"
+    },
+    {
+      "method": "GET",
+      "path": "/2010-04-01/Accounts/{AccountSid}/Messages.json",
+      "summary": "Retrieve a list of messages belonging to the account used to make the request",
+      "tags": [],
+      "parameters": [
+        {
+          "name": "AccountSid",
+          "in": "path",
+          "required": true,
+          "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Message resources to read."
+        },
+        {
+          "name": "To",
+          "in": "query",
+          "required": false,
+          "description": "Read messages sent to only this phone number."
+        },
+        {
+          "name": "From",
+          "in": "query",
+          "required": false,
+          "description": "Read messages sent from only this phone number or alphanumeric sender ID."
+        },
+        {
+          "name": "DateSent",
+          "in": "query",
+          "required": false,
+          "description": "The date of the messages to show. Specify a date as `YYYY-MM-DD` in GMT to read only messages sent on this date. For example: `2009-07-06`. You can also specify an inequality, such as `DateSent<=YYYY-MM-DD`, to read messages sent on or before midnight on a date, and `DateSent>=YYYY-MM-DD` to read messages sent on or after midnight on a date."
+        },
+        {
+          "name": "DateSent<",
+          "in": "query",
+          "required": false,
+          "description": "The date of the messages to show. Specify a date as `YYYY-MM-DD` in GMT to read only messages sent on this date. For example: `2009-07-06`. You can also specify an inequality, such as `DateSent<=YYYY-MM-DD`, to read messages sent on or before midnight on a date, and `DateSent>=YYYY-MM-DD` to read messages sent on or after midnight on a date."
+        },
+        {
+          "name": "DateSent>",
+          "in": "query",
+          "required": false,
+          "description": "The date of the messages to show. Specify a date as `YYYY-MM-DD` in GMT to read only messages sent on this date. For example: `2009-07-06`. You can also specify an inequality, such as `DateSent<=YYYY-MM-DD`, to read messages sent on or before midnight on a date, and `DateSent>=YYYY-MM-DD` to read messages sent on or after midnight on a date."
+        },
+        {
+          "name": "PageSize",
+          "in": "query",
+          "required": false,
+          "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000."
+        },
+        {
+          "name": "Page",
+          "in": "query",
+          "required": false,
+          "description": "The page index. This value is simply for client state."
+        },
+        {
+          "name": "PageToken",
+          "in": "query",
+          "required": false,
+          "description": "The page token. This is provided by the API."
+        }
+      ],
+      "body_fields": [],
+      "operation_id": "ListMessage"
+    },
+    {
+      "method": "GET",
+      "path": "/2010-04-01/Accounts/{AccountSid}/Addresses.json",
+      "summary": "",
+      "tags": [],
+      "parameters": [
+        {
+          "name": "AccountSid",
+          "in": "path",
+          "required": true,
+          "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that is responsible for the Address resource to read."
+        },
+        {
+          "name": "CustomerName",
+          "in": "query",
+          "required": false,
+          "description": "The `customer_name` of the Address resources to read."
+        },
+        {
+          "name": "FriendlyName",
+          "in": "query",
+          "required": false,
+          "description": "The string that identifies the Address resources to read."
+        },
+        {
+          "name": "IsoCountry",
+          "in": "query",
+          "required": false,
+          "description": "The ISO country code of the Address resources to read."
+        },
+        {
+          "name": "PageSize",
+          "in": "query",
+          "required": false,
+          "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000."
+        },
+        {
+          "name": "Page",
+          "in": "query",
+          "required": false,
+          "description": "The page index. This value is simply for client state."
+        },
+        {
+          "name": "PageToken",
+          "in": "query",
+          "required": false,
+          "description": "The page token. This is provided by the API."
+        }
+      ],
+      "body_fields": [],
+      "operation_id": "ListAddress"
+    },
+    {
+      "method": "GET",
+      "path": "/2010-04-01/Accounts/{AccountSid}/Keys/{Sid}.json",
+      "summary": "",
+      "tags": [],
+      "parameters": [
+        {
+          "name": "AccountSid",
+          "in": "path",
+          "required": true,
+          "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Key resource to fetch."
+        },
+        {
+          "name": "Sid",
+          "in": "path",
+          "required": true,
+          "description": "The Twilio-provided string that uniquely identifies the Key resource to fetch."
+        }
+      ],
+      "body_fields": [],
+      "operation_id": "FetchKey"
+    },
+    {
+      "method": "GET",
+      "path": "/2010-04-01/Accounts/{AccountSid}/Recordings.json",
+      "summary": "Retrieve a list of recordings belonging to the account used to make the request",
+      "tags": [],
+      "parameters": [
+        {
+          "name": "AccountSid",
+          "in": "path",
+          "required": true,
+          "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Recording resources to read."
+        },
+        {
+          "name": "DateCreated",
+          "in": "query",
+          "required": false,
+          "description": "Only include recordings that were created on this date. Specify a date as `YYYY-MM-DD` in GMT, for example: `2009-07-06`, to read recordings that were created on this date. You can also specify an inequality, such as `DateCreated<=YYYY-MM-DD`, to read recordings that were created on or before midnight of this date, and `DateCreated>=YYYY-MM-DD` to read recordings that were created on or after midnight of this date."
+        },
+        {
+          "name": "DateCreated<",
+          "in": "query",
+          "required": false,
+          "description": "Only include recordings that were created on this date. Specify a date as `YYYY-MM-DD` in GMT, for example: `2009-07-06`, to read recordings that were created on this date. You can also specify an inequality, such as `DateCreated<=YYYY-MM-DD`, to read recordings that were created on or before midnight of this date, and `DateCreated>=YYYY-MM-DD` to read recordings that were created on or after midnight of this date."
+        },
+        {
+          "name": "DateCreated>",
+          "in": "query",
+          "required": false,
+          "description": "Only include recordings that were created on this date. Specify a date as `YYYY-MM-DD` in GMT, for example: `2009-07-06`, to read recordings that were created on this date. You can also specify an inequality, such as `DateCreated<=YYYY-MM-DD`, to read recordings that were created on or before midnight of this date, and `DateCreated>=YYYY-MM-DD` to read recordings that were created on or after midnight of this date."
+        },
+        {
+          "name": "CallSid",
+          "in": "query",
+          "required": false,
+          "description": "The [Call](https://www.twilio.com/docs/voice/api/call-resource) SID of the resources to read."
+        },
+        {
+          "name": "ConferenceSid",
+          "in": "query",
+          "required": false,
+          "description": "The Conference SID that identifies the conference associated with the recording to read."
+        },
+        {
+          "name": "IncludeSoftDeleted",
+          "in": "query",
+          "required": false,
+          "description": "A boolean parameter indicating whether to retrieve soft deleted recordings or not. Recordings metadata are kept after deletion for a retention period of 40 days."
+        },
+        {
+          "name": "PageSize",
+          "in": "query",
+          "required": false,
+          "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000."
+        },
+        {
+          "name": "Page",
+          "in": "query",
+          "required": false,
+          "description": "The page index. This value is simply for client state."
+        },
+        {
+          "name": "PageToken",
+          "in": "query",
+          "required": false,
+          "description": "The page token. This is provided by the API."
+        }
+      ],
+      "body_fields": [],
+      "operation_id": "ListRecording"
+    },
+    {
+      "method": "GET",
+      "path": "/2010-04-01/Accounts/{AccountSid}/Calls/{Sid}.json",
+      "summary": "Fetch the call specified by the provided Call SID",
+      "tags": [],
+      "parameters": [
+        {
+          "name": "AccountSid",
+          "in": "path",
+          "required": true,
+          "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Call resource(s) to fetch."
+        },
+        {
+          "name": "Sid",
+          "in": "path",
+          "required": true,
+          "description": "The SID of the Call resource to fetch."
+        }
+      ],
+      "body_fields": [],
+      "operation_id": "FetchCall"
+    },
+    {
+      "method": "GET",
+      "path": "/2010-04-01/Accounts/{AccountSid}/Conferences.json",
+      "summary": "Retrieve a list of conferences belonging to the account used to make the request",
+      "tags": [],
+      "parameters": [
+        {
+          "name": "AccountSid",
+          "in": "path",
+          "required": true,
+          "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Conference resource(s) to read."
+        },
+        {
+          "name": "DateCreated",
+          "in": "query",
+          "required": false,
+          "description": "The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read. To read conferences that started on or before midnight on a date, use `<=YYYY-MM-DD`, and to specify  conferences that started on or after midnight on a date, use `>=YYYY-MM-DD`."
+        },
+        {
+          "name": "DateCreated<",
+          "in": "query",
+          "required": false,
+          "description": "The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read. To read conferences that started on or before midnight on a date, use `<=YYYY-MM-DD`, and to specify  conferences that started on or after midnight on a date, use `>=YYYY-MM-DD`."
+        },
+        {
+          "name": "DateCreated>",
+          "in": "query",
+          "required": false,
+          "description": "The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read. To read conferences that started on or before midnight on a date, use `<=YYYY-MM-DD`, and to specify  conferences that started on or after midnight on a date, use `>=YYYY-MM-DD`."
+        },
+        {
+          "name": "DateUpdated",
+          "in": "query",
+          "required": false,
+          "description": "The `date_updated` value, specified as `YYYY-MM-DD`, of the resources to read. To read conferences that were last updated on or before midnight on a date, use `<=YYYY-MM-DD`, and to specify conferences that were last updated on or after midnight on a given date, use  `>=YYYY-MM-DD`."
+        },
+        {
+          "name": "DateUpdated<",
+          "in": "query",
+          "required": false,
+          "description": "The `date_updated` value, specified as `YYYY-MM-DD`, of the resources to read. To read conferences that were last updated on or before midnight on a date, use `<=YYYY-MM-DD`, and to specify conferences that were last updated on or after midnight on a given date, use  `>=YYYY-MM-DD`."
+        },
+        {
+          "name": "DateUpdated>",
+          "in": "query",
+          "required": false,
+          "description": "The `date_updated` value, specified as `YYYY-MM-DD`, of the resources to read. To read conferences that were last updated on or before midnight on a date, use `<=YYYY-MM-DD`, and to specify conferences that were last updated on or after midnight on a given date, use  `>=YYYY-MM-DD`."
+        },
+        {
+          "name": "FriendlyName",
+          "in": "query",
+          "required": false,
+          "description": "The string that identifies the Conference resources to read."
+        },
+        {
+          "name": "Status",
+          "in": "query",
+          "required": false,
+          "description": "The status of the resources to read. Can be: `init`, `in-progress`, or `completed`."
+        },
+        {
+          "name": "PageSize",
+          "in": "query",
+          "required": false,
+          "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000."
+        },
+        {
+          "name": "Page",
+          "in": "query",
+          "required": false,
+          "description": "The page index. This value is simply for client state."
+        },
+        {
+          "name": "PageToken",
+          "in": "query",
+          "required": false,
+          "description": "The page token. This is provided by the API."
+        }
+      ],
+      "body_fields": [],
+      "operation_id": "ListConference"
+    },
+    {
+      "method": "GET",
+      "path": "/2010-04-01/Accounts/{AccountSid}/ConnectApps.json",
+      "summary": "Retrieve a list of connect-apps belonging to the account used to make the request",
+      "tags": [],
+      "parameters": [
+        {
+          "name": "AccountSid",
+          "in": "path",
+          "required": true,
+          "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the ConnectApp resources to read."
+        },
+        {
+          "name": "PageSize",
+          "in": "query",
+          "required": false,
+          "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000."
+        },
+        {
+          "name": "Page",
+          "in": "query",
+          "required": false,
+          "description": "The page index. This value is simply for client state."
+        },
+        {
+          "name": "PageToken",
+          "in": "query",
+          "required": false,
+          "description": "The page token. This is provided by the API."
+        }
+      ],
+      "body_fields": [],
+      "operation_id": "ListConnectApp"
+    },
+    {
+      "method": "GET",
+      "path": "/2010-04-01/Accounts/{AccountSid}/SIP/Domains.json",
+      "summary": "Retrieve a list of domains belonging to the account used to make the request",
+      "tags": [],
+      "parameters": [
+        {
+          "name": "AccountSid",
+          "in": "path",
+          "required": true,
+          "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the SipDomain resources to read."
+        },
+        {
+          "name": "PageSize",
+          "in": "query",
+          "required": false,
+          "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000."
+        },
+        {
+          "name": "Page",
+          "in": "query",
+          "required": false,
+          "description": "The page index. This value is simply for client state."
+        },
+        {
+          "name": "PageToken",
+          "in": "query",
+          "required": false,
+          "description": "The page token. This is provided by the API."
+        }
+      ],
+      "body_fields": [],
+      "operation_id": "ListSipDomain"
+    },
+    {
+      "method": "GET",
+      "path": "/2010-04-01/Accounts/{AccountSid}/SigningKeys.json",
+      "summary": "",
+      "tags": [],
+      "parameters": [
+        {
+          "name": "AccountSid",
+          "in": "path",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "PageSize",
+          "in": "query",
+          "required": false,
+          "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000."
+        },
+        {
+          "name": "Page",
+          "in": "query",
+          "required": false,
+          "description": "The page index. This value is simply for client state."
+        },
+        {
+          "name": "PageToken",
+          "in": "query",
+          "required": false,
+          "description": "The page token. This is provided by the API."
+        }
+      ],
+      "body_fields": [],
+      "operation_id": "ListSigningKey"
+    },
+    {
+      "method": "GET",
+      "path": "/2010-04-01/Accounts/{AccountSid}/Applications.json",
+      "summary": "Retrieve a list of applications representing an application within the requesting account",
+      "tags": [],
+      "parameters": [
+        {
+          "name": "AccountSid",
+          "in": "path",
+          "required": true,
+          "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Application resources to read."
+        },
+        {
+          "name": "FriendlyName",
+          "in": "query",
+          "required": false,
+          "description": "The string that identifies the Application resources to read."
+        },
+        {
+          "name": "PageSize",
+          "in": "query",
+          "required": false,
+          "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000."
+        },
+        {
+          "name": "Page",
+          "in": "query",
+          "required": false,
+          "description": "The page index. This value is simply for client state."
+        },
+        {
+          "name": "PageToken",
+          "in": "query",
+          "required": false,
+          "description": "The page token. This is provided by the API."
+        }
+      ],
+      "body_fields": [],
+      "operation_id": "ListApplication"
+    },
+    {
+      "method": "GET",
+      "path": "/2010-04-01/Accounts/{AccountSid}/Queues/{Sid}.json",
+      "summary": "Fetch an instance of a queue identified by the QueueSid",
+      "tags": [],
+      "parameters": [
+        {
+          "name": "AccountSid",
+          "in": "path",
+          "required": true,
+          "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Queue resource to fetch."
+        },
+        {
+          "name": "Sid",
+          "in": "path",
+          "required": true,
+          "description": "The Twilio-provided string that uniquely identifies the Queue resource to fetch"
+        }
+      ],
+      "body_fields": [],
+      "operation_id": "FetchQueue"
+    },
+    {
+      "method": "GET",
+      "path": "/2010-04-01/Accounts/{AccountSid}/Notifications.json",
+      "summary": "Retrieve a list of notifications belonging to the account used to make the request",
+      "tags": [],
+      "parameters": [
+        {
+          "name": "AccountSid",
+          "in": "path",
+          "required": true,
+          "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Notification resources to read."
+        },
+        {
+          "name": "Log",
+          "in": "query",
+          "required": false,
+          "description": "Only read notifications of the specified log level. Can be:  `0` to read only ERROR notifications or `1` to read only WARNING notifications. By default, all notifications are read."
+        },
+        {
+          "name": "MessageDate",
+          "in": "query",
+          "required": false,
+          "description": "Only show notifications for the specified date, formatted as `YYYY-MM-DD`. You can also specify an inequality, such as `<=YYYY-MM-DD` for messages logged at or before midnight on a date, or `>=YYYY-MM-DD` for messages logged at or after midnight on a date."
+        },
+        {
+          "name": "MessageDate<",
+          "in": "query",
+          "required": false,
+          "description": "Only show notifications for the specified date, formatted as `YYYY-MM-DD`. You can also specify an inequality, such as `<=YYYY-MM-DD` for messages logged at or before midnight on a date, or `>=YYYY-MM-DD` for messages logged at or after midnight on a date."
+        },
+        {
+          "name": "MessageDate>",
+          "in": "query",
+          "required": false,
+          "description": "Only show notifications for the specified date, formatted as `YYYY-MM-DD`. You can also specify an inequality, such as `<=YYYY-MM-DD` for messages logged at or before midnight on a date, or `>=YYYY-MM-DD` for messages logged at or after midnight on a date."
+        },
+        {
+          "name": "PageSize",
+          "in": "query",
+          "required": false,
+          "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000."
+        },
+        {
+          "name": "Page",
+          "in": "query",
+          "required": false,
+          "description": "The page index. This value is simply for client state."
+        },
+        {
+          "name": "PageToken",
+          "in": "query",
+          "required": false,
+          "description": "The page token. This is provided by the API."
+        }
+      ],
+      "body_fields": [],
+      "operation_id": "ListNotification"
+    },
+    {
+      "method": "GET",
+      "path": "/2010-04-01/Accounts/{AccountSid}/Usage/Records.json",
+      "summary": "Retrieve a list of usage-records belonging to the account used to make the request",
+      "tags": [],
+      "parameters": [
+        {
+          "name": "AccountSid",
+          "in": "path",
+          "required": true,
+          "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the UsageRecord resources to read."
+        },
+        {
+          "name": "Category",
+          "in": "query",
+          "required": false,
+          "description": "The [usage category](https://www.twilio.com/docs/usage/api/usage-record#usage-categories) of the UsageRecord resources to read. Only UsageRecord resources in the specified category are retrieved."
+        },
+        {
+          "name": "StartDate",
+          "in": "query",
+          "required": false,
+          "description": "Only include usage that has occurred on or after this date. Specify the date in GMT and format as `YYYY-MM-DD`. You can also specify offsets from the current date, such as: `-30days`, which will set the start date to be 30 days before the current date."
+        },
+        {
+          "name": "EndDate",
+          "in": "query",
+          "required": false,
+          "description": "Only include usage that occurred on or before this date. Specify the date in GMT and format as `YYYY-MM-DD`.  You can also specify offsets from the current date, such as: `+30days`, which will set the end date to 30 days from the current date."
+        },
+        {
+          "name": "IncludeSubaccounts",
+          "in": "query",
+          "required": false,
+          "description": "Whether to include usage from the master account and all its subaccounts. Can be: `true` (the default) to include usage from the master account and all subaccounts or `false` to retrieve usage from only the specified account."
+        },
+        {
+          "name": "PageSize",
+          "in": "query",
+          "required": false,
+          "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000."
+        },
+        {
+          "name": "Page",
+          "in": "query",
+          "required": false,
+          "description": "The page index. This value is simply for client state."
+        },
+        {
+          "name": "PageToken",
+          "in": "query",
+          "required": false,
+          "description": "The page token. This is provided by the API."
+        }
+      ],
+      "body_fields": [],
+      "operation_id": "ListUsageRecord"
+    },
+    {
+      "method": "GET",
+      "path": "/2010-04-01/Accounts/{AccountSid}/Messages/{Sid}.json",
+      "summary": "Fetch a message belonging to the account used to make the request",
+      "tags": [],
+      "parameters": [
+        {
+          "name": "AccountSid",
+          "in": "path",
+          "required": true,
+          "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Message resource to fetch."
+        },
+        {
+          "name": "Sid",
+          "in": "path",
+          "required": true,
+          "description": "The Twilio-provided string that uniquely identifies the Message resource to fetch."
+        }
+      ],
+      "body_fields": [],
+      "operation_id": "FetchMessage"
+    },
+    {
+      "method": "GET",
+      "path": "/2010-04-01/Accounts/{AccountSid}/SMS/ShortCodes.json",
+      "summary": "Retrieve a list of short-codes belonging to the account used to make the request",
+      "tags": [],
+      "parameters": [
+        {
+          "name": "AccountSid",
+          "in": "path",
+          "required": true,
+          "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the ShortCode resource(s) to read."
+        },
+        {
+          "name": "FriendlyName",
+          "in": "query",
+          "required": false,
+          "description": "The string that identifies the ShortCode resources to read."
+        },
+        {
+          "name": "ShortCode",
+          "in": "query",
+          "required": false,
+          "description": "Only show the ShortCode resources that match this pattern. You can specify partial numbers and use '*' as a wildcard for any digit."
+        },
+        {
+          "name": "PageSize",
+          "in": "query",
+          "required": false,
+          "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000."
+        },
+        {
+          "name": "Page",
+          "in": "query",
+          "required": false,
+          "description": "The page index. This value is simply for client state."
+        },
+        {
+          "name": "PageToken",
+          "in": "query",
+          "required": false,
+          "description": "The page token. This is provided by the API."
+        }
+      ],
+      "body_fields": [],
+      "operation_id": "ListShortCode"
+    },
+    {
+      "method": "GET",
+      "path": "/2010-04-01/Accounts/{AccountSid}/Transcriptions.json",
+      "summary": "Retrieve a list of transcriptions belonging to the account used to make the request",
+      "tags": [],
+      "parameters": [
+        {
+          "name": "AccountSid",
+          "in": "path",
+          "required": true,
+          "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Transcription resources to read."
+        },
+        {
+          "name": "PageSize",
+          "in": "query",
+          "required": false,
+          "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000."
+        },
+        {
+          "name": "Page",
+          "in": "query",
+          "required": false,
+          "description": "The page index. This value is simply for client state."
+        },
+        {
+          "name": "PageToken",
+          "in": "query",
+          "required": false,
+          "description": "The page token. This is provided by the API."
+        }
+      ],
+      "body_fields": [],
+      "operation_id": "ListTranscription"
+    },
+    {
+      "method": "GET",
+      "path": "/2010-04-01/Accounts/{AccountSid}/Usage/Triggers.json",
+      "summary": "Retrieve a list of usage-triggers belonging to the account used to make the request",
+      "tags": [],
+      "parameters": [
+        {
+          "name": "AccountSid",
+          "in": "path",
+          "required": true,
+          "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the UsageTrigger resources to read."
+        },
+        {
+          "name": "Recurring",
+          "in": "query",
+          "required": false,
+          "description": "The frequency of recurring UsageTriggers to read. Can be: `daily`, `monthly`, or `yearly` to read recurring UsageTriggers. An empty value or a value of `alltime` reads non-recurring UsageTriggers."
+        },
+        {
+          "name": "TriggerBy",
+          "in": "query",
+          "required": false,
+          "description": "The trigger field of the UsageTriggers to read.  Can be: `count`, `usage`, or `price` as described in the [UsageRecords documentation](https://www.twilio.com/docs/usage/api/usage-record#usage-count-price)."
+        },
+        {
+          "name": "UsageCategory",
+          "in": "query",
+          "required": false,
+          "description": "The usage category of the UsageTriggers to read. Must be a supported [usage categories](https://www.twilio.com/docs/usage/api/usage-record#usage-categories)."
+        },
+        {
+          "name": "PageSize",
+          "in": "query",
+          "required": false,
+          "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000."
+        },
+        {
+          "name": "Page",
+          "in": "query",
+          "required": false,
+          "description": "The page index. This value is simply for client state."
+        },
+        {
+          "name": "PageToken",
+          "in": "query",
+          "required": false,
+          "description": "The page token. This is provided by the API."
+        }
+      ],
+      "body_fields": [],
+      "operation_id": "ListUsageTrigger"
+    },
+    {
+      "method": "GET",
+      "path": "/2010-04-01/Accounts/{AccountSid}/Addresses/{Sid}.json",
+      "summary": "",
+      "tags": [],
+      "parameters": [
+        {
+          "name": "AccountSid",
+          "in": "path",
+          "required": true,
+          "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that is responsible for the Address resource to fetch."
+        },
+        {
+          "name": "Sid",
+          "in": "path",
+          "required": true,
+          "description": "The Twilio-provided string that uniquely identifies the Address resource to fetch."
+        }
+      ],
+      "body_fields": [],
+      "operation_id": "FetchAddress"
+    },
+    {
+      "method": "GET",
+      "path": "/2010-04-01/Accounts/{AccountSid}/Recordings/{Sid}.json",
+      "summary": "Fetch an instance of a recording",
+      "tags": [],
+      "parameters": [
+        {
+          "name": "AccountSid",
+          "in": "path",
+          "required": true,
+          "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Recording resource to fetch."
+        },
+        {
+          "name": "Sid",
+          "in": "path",
+          "required": true,
+          "description": "The Twilio-provided string that uniquely identifies the Recording resource to fetch."
+        },
+        {
+          "name": "IncludeSoftDeleted",
+          "in": "query",
+          "required": false,
+          "description": "A boolean parameter indicating whether to retrieve soft deleted recordings or not. Recordings metadata are kept after deletion for a retention period of 40 days."
+        }
+      ],
+      "body_fields": [],
+      "operation_id": "FetchRecording"
+    },
+    {
+      "method": "GET",
+      "path": "/2010-04-01/Accounts/{AccountSid}/Conferences/{Sid}.json",
+      "summary": "Fetch an instance of a conference",
+      "tags": [],
+      "parameters": [
+        {
+          "name": "AccountSid",
+          "in": "path",
+          "required": true,
+          "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Conference resource(s) to fetch."
+        },
+        {
+          "name": "Sid",
+          "in": "path",
+          "required": true,
+          "description": "The Twilio-provided string that uniquely identifies the Conference resource to fetch"
+        }
+      ],
+      "body_fields": [],
+      "operation_id": "FetchConference"
+    },
+    {
+      "method": "GET",
+      "path": "/2010-04-01/Accounts/{AccountSid}/ConnectApps/{Sid}.json",
+      "summary": "Fetch an instance of a connect-app",
+      "tags": [],
+      "parameters": [
+        {
+          "name": "AccountSid",
+          "in": "path",
+          "required": true,
+          "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the ConnectApp resource to fetch."
+        },
+        {
+          "name": "Sid",
+          "in": "path",
+          "required": true,
+          "description": "The Twilio-provided string that uniquely identifies the ConnectApp resource to fetch."
+        }
+      ],
+      "body_fields": [],
+      "operation_id": "FetchConnectApp"
+    },
+    {
+      "method": "GET",
+      "path": "/2010-04-01/Accounts/{AccountSid}/OutgoingCallerIds.json",
+      "summary": "Retrieve a list of outgoing-caller-ids belonging to the account used to make the request",
+      "tags": [],
+      "parameters": [
+        {
+          "name": "AccountSid",
+          "in": "path",
+          "required": true,
+          "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the OutgoingCallerId resources to read."
+        },
+        {
+          "name": "PhoneNumber",
+          "in": "query",
+          "required": false,
+          "description": "The phone number of the OutgoingCallerId resources to read."
+        },
+        {
+          "name": "FriendlyName",
+          "in": "query",
+          "required": false,
+          "description": "The string that identifies the OutgoingCallerId resources to read."
+        },
+        {
+          "name": "PageSize",
+          "in": "query",
+          "required": false,
+          "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000."
+        },
+        {
+          "name": "Page",
+          "in": "query",
+          "required": false,
+          "description": "The page index. This value is simply for client state."
+        },
+        {
+          "name": "PageToken",
+          "in": "query",
+          "required": false,
+          "description": "The page token. This is provided by the API."
+        }
+      ],
+      "body_fields": [],
+      "operation_id": "ListOutgoingCallerId"
+    },
+    {
+      "method": "GET",
+      "path": "/2010-04-01/Accounts/{AccountSid}/SIP/Domains/{Sid}.json",
+      "summary": "Fetch an instance of a Domain",
+      "tags": [],
+      "parameters": [
+        {
+          "name": "AccountSid",
+          "in": "path",
+          "required": true,
+          "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the SipDomain resource to fetch."
+        },
+        {
+          "name": "Sid",
+          "in": "path",
+          "required": true,
+          "description": "The Twilio-provided string that uniquely identifies the SipDomain resource to fetch."
+        }
+      ],
+      "body_fields": [],
+      "operation_id": "FetchSipDomain"
+    },
+    {
+      "method": "GET",
+      "path": "/2010-04-01/Accounts/{AccountSid}/SigningKeys/{Sid}.json",
+      "summary": "",
+      "tags": [],
+      "parameters": [
+        {
+          "name": "AccountSid",
+          "in": "path",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "Sid",
+          "in": "path",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "body_fields": [],
+      "operation_id": "FetchSigningKey"
+    }
+  ],
+  "source_format": "openapi3"
+}

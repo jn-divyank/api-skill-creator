@@ -1,0 +1,299 @@
+{
+  "service_name": "notion-api",
+  "base_url": "https://api.notion.com",
+  "auth_type": "bearer",
+  "auth_header_format": "Bearer {token}",
+  "env_vars_needed": [
+    "NOTION_API_URL",
+    "NOTION_API_TOKEN"
+  ],
+  "endpoints": [
+    {
+      "method": "DELETE",
+      "path": "/v1/blocks/{id}",
+      "summary": "Delete a block",
+      "tags": [
+        "Blocks"
+      ],
+      "parameters": [
+        {
+          "name": "Notion-Version",
+          "in": "header",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "body_fields": [],
+      "operation_id": "deleteABlock"
+    },
+    {
+      "method": "GET",
+      "path": "/v1/blocks/{id}",
+      "summary": "Retrieve a block",
+      "tags": [
+        "Blocks"
+      ],
+      "parameters": [
+        {
+          "name": "Notion-Version",
+          "in": "header",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "body_fields": [],
+      "operation_id": "retrieveABlock"
+    },
+    {
+      "method": "PATCH",
+      "path": "/v1/blocks/{id}",
+      "summary": "Update a block",
+      "tags": [
+        "Blocks"
+      ],
+      "parameters": [
+        {
+          "name": "Notion-Version",
+          "in": "header",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "body_fields": [
+        {
+          "name": "paragraph",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "operation_id": "updateABlock"
+    },
+    {
+      "method": "GET",
+      "path": "/v1/blocks/{id}/children",
+      "summary": "Retrieve block children",
+      "tags": [
+        "Blocks"
+      ],
+      "parameters": [
+        {
+          "name": "page_size",
+          "in": "query",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "Notion-Version",
+          "in": "header",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "body_fields": [],
+      "operation_id": "retrieveBlockChildren"
+    },
+    {
+      "method": "PATCH",
+      "path": "/v1/blocks/{id}/children",
+      "summary": "Append block children",
+      "tags": [
+        "Blocks"
+      ],
+      "parameters": [
+        {
+          "name": "Notion-Version",
+          "in": "header",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "body_fields": [
+        {
+          "name": "children",
+          "required": false,
+          "type": "array"
+        }
+      ],
+      "operation_id": "appendBlockChildren"
+    },
+    {
+      "method": "GET",
+      "path": "/v1/comments",
+      "summary": "Retrieve comments",
+      "tags": [
+        "Comments"
+      ],
+      "parameters": [
+        {
+          "name": "block_id",
+          "in": "query",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "page_size",
+          "in": "query",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "Notion-Version",
+          "in": "header",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "body_fields": [],
+      "operation_id": "retrieveComments"
+    },
+    {
+      "method": "GET",
+      "path": "/v1/databases/{id}",
+      "summary": "Retrieve a database",
+      "tags": [
+        "Databases"
+      ],
+      "parameters": [
+        {
+          "name": "Notion-Version",
+          "in": "header",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "body_fields": [],
+      "operation_id": "retrieveADatabase"
+    },
+    {
+      "method": "PATCH",
+      "path": "/v1/databases/{id}",
+      "summary": "Update a database",
+      "tags": [
+        "Databases"
+      ],
+      "parameters": [
+        {
+          "name": "Notion-Version",
+          "in": "header",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "body_fields": [
+        {
+          "name": "properties",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "name": "title",
+          "required": false,
+          "type": "array"
+        }
+      ],
+      "operation_id": "updateADatabase"
+    },
+    {
+      "method": "POST",
+      "path": "/v1/databases/{id}/query",
+      "summary": "Query a database",
+      "tags": [
+        "Databases"
+      ],
+      "parameters": [
+        {
+          "name": "Notion-Version",
+          "in": "header",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "body_fields": [
+        {
+          "name": "filter",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "operation_id": "queryADatabase"
+    },
+    {
+      "method": "GET",
+      "path": "/v1/pages/{id}",
+      "summary": "Retrieve a Page",
+      "tags": [
+        "Pages"
+      ],
+      "parameters": [
+        {
+          "name": "Notion-Version",
+          "in": "header",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "",
+          "in": "header",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "body_fields": [],
+      "operation_id": "retrieveAPage"
+    },
+    {
+      "method": "PATCH",
+      "path": "/v1/pages/{id}",
+      "summary": "Update Page properties ",
+      "tags": [
+        "Pages"
+      ],
+      "parameters": [
+        {
+          "name": "Notion-Version",
+          "in": "header",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "body_fields": [
+        {
+          "name": "properties",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "operation_id": "updatePageProperties"
+    },
+    {
+      "method": "GET",
+      "path": "/v1/pages/{page_id}/properties/{property_id}",
+      "summary": "Retrieve a Page Property Item",
+      "tags": [
+        "Pages"
+      ],
+      "parameters": [],
+      "body_fields": [],
+      "operation_id": "retrieveAPagePropertyItem"
+    },
+    {
+      "method": "GET",
+      "path": "/v1/users/{id}",
+      "summary": "Retrieve a user",
+      "tags": [
+        "Users"
+      ],
+      "parameters": [
+        {
+          "name": "Notion-Version",
+          "in": "header",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "body_fields": [],
+      "operation_id": "retrieveAUser"
+    }
+  ],
+  "source_format": "openapi3"
+}

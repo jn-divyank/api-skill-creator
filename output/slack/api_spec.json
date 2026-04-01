@@ -1,0 +1,974 @@
+{
+  "service_name": "slack-web-api",
+  "base_url": "https://slack.com/api",
+  "auth_type": "bearer",
+  "auth_header_format": "Bearer {token}",
+  "env_vars_needed": [
+    "SLACK_WEB_API_URL",
+    "SLACK_WEB_API_TOKEN"
+  ],
+  "endpoints": [
+    {
+      "method": "GET",
+      "path": "/api.test",
+      "summary": "Checks API calling code.",
+      "tags": [
+        "api"
+      ],
+      "parameters": [
+        {
+          "name": "error",
+          "in": "query",
+          "required": false,
+          "description": "Error response to return"
+        },
+        {
+          "name": "foo",
+          "in": "query",
+          "required": false,
+          "description": "example property to return"
+        }
+      ],
+      "body_fields": [],
+      "operation_id": "api_test"
+    },
+    {
+      "method": "GET",
+      "path": "/dnd.info",
+      "summary": "Retrieves a user's current Do Not Disturb status.",
+      "tags": [
+        "dnd"
+      ],
+      "parameters": [
+        {
+          "name": "token",
+          "in": "query",
+          "required": false,
+          "description": "Authentication token. Requires scope: `dnd:read`"
+        },
+        {
+          "name": "user",
+          "in": "query",
+          "required": false,
+          "description": "User to fetch status for (defaults to current user)"
+        }
+      ],
+      "body_fields": [],
+      "operation_id": "dnd_info"
+    },
+    {
+      "method": "GET",
+      "path": "/auth.test",
+      "summary": "Checks authentication & identity.",
+      "tags": [
+        "auth"
+      ],
+      "parameters": [
+        {
+          "name": "token",
+          "in": "header",
+          "required": true,
+          "description": "Authentication token. Requires scope: `none`"
+        }
+      ],
+      "body_fields": [],
+      "operation_id": "auth_test"
+    },
+    {
+      "method": "GET",
+      "path": "/bots.info",
+      "summary": "Gets information about a bot user.",
+      "tags": [
+        "bots"
+      ],
+      "parameters": [
+        {
+          "name": "token",
+          "in": "query",
+          "required": true,
+          "description": "Authentication token. Requires scope: `users:read`"
+        },
+        {
+          "name": "bot",
+          "in": "query",
+          "required": false,
+          "description": "Bot user to get info on"
+        }
+      ],
+      "body_fields": [],
+      "operation_id": "bots_info"
+    },
+    {
+      "method": "GET",
+      "path": "/pins.list",
+      "summary": "Lists items pinned to a channel.",
+      "tags": [
+        "pins"
+      ],
+      "parameters": [
+        {
+          "name": "token",
+          "in": "query",
+          "required": true,
+          "description": "Authentication token. Requires scope: `pins:read`"
+        },
+        {
+          "name": "channel",
+          "in": "query",
+          "required": true,
+          "description": "Channel to get pinned items for."
+        }
+      ],
+      "body_fields": [],
+      "operation_id": "pins_list"
+    },
+    {
+      "method": "GET",
+      "path": "/team.info",
+      "summary": "Gets information about the current team.",
+      "tags": [
+        "team"
+      ],
+      "parameters": [
+        {
+          "name": "token",
+          "in": "query",
+          "required": true,
+          "description": "Authentication token. Requires scope: `team:read`"
+        },
+        {
+          "name": "team",
+          "in": "query",
+          "required": false,
+          "description": "Team to get info on, if omitted, will return information about the current team. Will only return team that the authenticated token is allowed to see through external shared channels"
+        }
+      ],
+      "body_fields": [],
+      "operation_id": "team_info"
+    },
+    {
+      "method": "GET",
+      "path": "/calls.info",
+      "summary": "Returns information about a Call.",
+      "tags": [
+        "calls"
+      ],
+      "parameters": [
+        {
+          "name": "token",
+          "in": "header",
+          "required": true,
+          "description": "Authentication token. Requires scope: `calls:read`"
+        },
+        {
+          "name": "id",
+          "in": "query",
+          "required": true,
+          "description": "`id` of the Call returned by the [`calls.add`](/methods/calls.add) method."
+        }
+      ],
+      "body_fields": [],
+      "operation_id": "calls_info"
+    },
+    {
+      "method": "GET",
+      "path": "/emoji.list",
+      "summary": "Lists custom emoji for a team.",
+      "tags": [
+        "emoji"
+      ],
+      "parameters": [
+        {
+          "name": "token",
+          "in": "query",
+          "required": true,
+          "description": "Authentication token. Requires scope: `emoji:read`"
+        }
+      ],
+      "body_fields": [],
+      "operation_id": "emoji_list"
+    },
+    {
+      "method": "GET",
+      "path": "/files.info",
+      "summary": "Gets information about a file.",
+      "tags": [
+        "files"
+      ],
+      "parameters": [
+        {
+          "name": "token",
+          "in": "query",
+          "required": false,
+          "description": "Authentication token. Requires scope: `files:read`"
+        },
+        {
+          "name": "file",
+          "in": "query",
+          "required": false,
+          "description": "Specify a file by providing its ID."
+        },
+        {
+          "name": "count",
+          "in": "query",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "page",
+          "in": "query",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "limit",
+          "in": "query",
+          "required": false,
+          "description": "The maximum number of items to return. Fewer than the requested number of items may be returned, even if the end of the list hasn't been reached."
+        },
+        {
+          "name": "cursor",
+          "in": "query",
+          "required": false,
+          "description": "Parameter for pagination. File comments are paginated for a single file. Set `cursor` equal to the `next_cursor` attribute returned by the previous request's `response_metadata`. This parameter is optional, but pagination is mandatory: the default value simply fetches the first \"page\" of the collection of comments. See [pagination](/docs/pagination) for more details."
+        }
+      ],
+      "body_fields": [],
+      "operation_id": "files_info"
+    },
+    {
+      "method": "GET",
+      "path": "/files.list",
+      "summary": "List for a team, in a channel, or from a user with applied filters.",
+      "tags": [
+        "files"
+      ],
+      "parameters": [
+        {
+          "name": "token",
+          "in": "query",
+          "required": false,
+          "description": "Authentication token. Requires scope: `files:read`"
+        },
+        {
+          "name": "user",
+          "in": "query",
+          "required": false,
+          "description": "Filter files created by a single user."
+        },
+        {
+          "name": "channel",
+          "in": "query",
+          "required": false,
+          "description": "Filter files appearing in a specific channel, indicated by its ID."
+        },
+        {
+          "name": "ts_from",
+          "in": "query",
+          "required": false,
+          "description": "Filter files created after this timestamp (inclusive)."
+        },
+        {
+          "name": "ts_to",
+          "in": "query",
+          "required": false,
+          "description": "Filter files created before this timestamp (inclusive)."
+        },
+        {
+          "name": "types",
+          "in": "query",
+          "required": false,
+          "description": "Filter files by type ([see below](#file_types)). You can pass multiple values in the types argument, like `types=spaces,snippets`.The default value is `all`, which does not filter the list."
+        },
+        {
+          "name": "count",
+          "in": "query",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "page",
+          "in": "query",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "show_files_hidden_by_limit",
+          "in": "query",
+          "required": false,
+          "description": "Show truncated file info for files hidden due to being too old, and the team who owns the file being over the file limit."
+        }
+      ],
+      "body_fields": [],
+      "operation_id": "files_list"
+    },
+    {
+      "method": "GET",
+      "path": "/stars.list",
+      "summary": "Lists stars for a user.",
+      "tags": [
+        "stars"
+      ],
+      "parameters": [
+        {
+          "name": "token",
+          "in": "query",
+          "required": false,
+          "description": "Authentication token. Requires scope: `stars:read`"
+        },
+        {
+          "name": "count",
+          "in": "query",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "page",
+          "in": "query",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "cursor",
+          "in": "query",
+          "required": false,
+          "description": "Parameter for pagination. Set `cursor` equal to the `next_cursor` attribute returned by the previous request's `response_metadata`. This parameter is optional, but pagination is mandatory: the default value simply fetches the first \"page\" of the collection. See [pagination](/docs/pagination) for more details."
+        },
+        {
+          "name": "limit",
+          "in": "query",
+          "required": false,
+          "description": "The maximum number of items to return. Fewer than the requested number of items may be returned, even if the end of the list hasn't been reached."
+        }
+      ],
+      "body_fields": [],
+      "operation_id": "stars_list"
+    },
+    {
+      "method": "GET",
+      "path": "/users.info",
+      "summary": "Gets information about a user.",
+      "tags": [
+        "users"
+      ],
+      "parameters": [
+        {
+          "name": "token",
+          "in": "query",
+          "required": true,
+          "description": "Authentication token. Requires scope: `users:read`"
+        },
+        {
+          "name": "include_locale",
+          "in": "query",
+          "required": false,
+          "description": "Set this to `true` to receive the locale for this user. Defaults to `false`"
+        },
+        {
+          "name": "user",
+          "in": "query",
+          "required": false,
+          "description": "User to get info on"
+        }
+      ],
+      "body_fields": [],
+      "operation_id": "users_info"
+    },
+    {
+      "method": "GET",
+      "path": "/users.list",
+      "summary": "Lists all users in a Slack team.",
+      "tags": [
+        "users"
+      ],
+      "parameters": [
+        {
+          "name": "token",
+          "in": "query",
+          "required": false,
+          "description": "Authentication token. Requires scope: `users:read`"
+        },
+        {
+          "name": "limit",
+          "in": "query",
+          "required": false,
+          "description": "The maximum number of items to return. Fewer than the requested number of items may be returned, even if the end of the users list hasn't been reached. Providing no `limit` value will result in Slack attempting to deliver you the entire result set. If the collection is too large you may experience `limit_required` or HTTP 500 errors."
+        },
+        {
+          "name": "cursor",
+          "in": "query",
+          "required": false,
+          "description": "Paginate through collections of data by setting the `cursor` parameter to a `next_cursor` attribute returned by a previous request's `response_metadata`. Default value fetches the first \"page\" of the collection. See [pagination](/docs/pagination) for more detail."
+        },
+        {
+          "name": "include_locale",
+          "in": "query",
+          "required": false,
+          "description": "Set this to `true` to receive the locale for users. Defaults to `false`"
+        }
+      ],
+      "body_fields": [],
+      "operation_id": "users_list"
+    },
+    {
+      "method": "GET",
+      "path": "/views.open",
+      "summary": "Open a view for a user.",
+      "tags": [
+        "views"
+      ],
+      "parameters": [
+        {
+          "name": "token",
+          "in": "header",
+          "required": true,
+          "description": "Authentication token. Requires scope: `none`"
+        },
+        {
+          "name": "trigger_id",
+          "in": "query",
+          "required": true,
+          "description": "Exchange a trigger to post to the user."
+        },
+        {
+          "name": "view",
+          "in": "query",
+          "required": true,
+          "description": "A [view payload](/reference/surfaces/views). This must be a JSON-encoded string."
+        }
+      ],
+      "body_fields": [],
+      "operation_id": "views_open"
+    },
+    {
+      "method": "GET",
+      "path": "/views.push",
+      "summary": "Push a view onto the stack of a root view.",
+      "tags": [
+        "views"
+      ],
+      "parameters": [
+        {
+          "name": "token",
+          "in": "header",
+          "required": true,
+          "description": "Authentication token. Requires scope: `none`"
+        },
+        {
+          "name": "trigger_id",
+          "in": "query",
+          "required": true,
+          "description": "Exchange a trigger to post to the user."
+        },
+        {
+          "name": "view",
+          "in": "query",
+          "required": true,
+          "description": "A [view payload](/reference/surfaces/views). This must be a JSON-encoded string."
+        }
+      ],
+      "body_fields": [],
+      "operation_id": "views_push"
+    },
+    {
+      "method": "GET",
+      "path": "/auth.revoke",
+      "summary": "Revokes a token.",
+      "tags": [
+        "auth"
+      ],
+      "parameters": [
+        {
+          "name": "token",
+          "in": "query",
+          "required": true,
+          "description": "Authentication token. Requires scope: `none`"
+        },
+        {
+          "name": "test",
+          "in": "query",
+          "required": false,
+          "description": "Setting this parameter to `1` triggers a _testing mode_ where the specified token will not actually be revoked."
+        }
+      ],
+      "body_fields": [],
+      "operation_id": "auth_revoke"
+    },
+    {
+      "method": "GET",
+      "path": "/dialog.open",
+      "summary": "Open a dialog with a user",
+      "tags": [
+        "dialog"
+      ],
+      "parameters": [
+        {
+          "name": "token",
+          "in": "header",
+          "required": true,
+          "description": "Authentication token. Requires scope: `none`"
+        },
+        {
+          "name": "dialog",
+          "in": "query",
+          "required": true,
+          "description": "The dialog definition. This must be a JSON-encoded string."
+        },
+        {
+          "name": "trigger_id",
+          "in": "query",
+          "required": true,
+          "description": "Exchange a trigger to post to the user."
+        }
+      ],
+      "body_fields": [],
+      "operation_id": "dialog_open"
+    },
+    {
+      "method": "GET",
+      "path": "/oauth.token",
+      "summary": "Exchanges a temporary OAuth verifier code for a workspace token.",
+      "tags": [
+        "oauth"
+      ],
+      "parameters": [
+        {
+          "name": "client_id",
+          "in": "query",
+          "required": false,
+          "description": "Issued when you created your application."
+        },
+        {
+          "name": "client_secret",
+          "in": "query",
+          "required": false,
+          "description": "Issued when you created your application."
+        },
+        {
+          "name": "code",
+          "in": "query",
+          "required": false,
+          "description": "The `code` param returned via the OAuth callback."
+        },
+        {
+          "name": "redirect_uri",
+          "in": "query",
+          "required": false,
+          "description": "This must match the originally submitted URI (if one was sent)."
+        },
+        {
+          "name": "single_channel",
+          "in": "query",
+          "required": false,
+          "description": "Request the user to add your app only to a single channel."
+        }
+      ],
+      "body_fields": [],
+      "operation_id": "oauth_token"
+    },
+    {
+      "method": "GET",
+      "path": "/rtm.connect",
+      "summary": "Starts a Real Time Messaging session.",
+      "tags": [
+        "rtm"
+      ],
+      "parameters": [
+        {
+          "name": "token",
+          "in": "query",
+          "required": true,
+          "description": "Authentication token. Requires scope: `rtm:stream`"
+        },
+        {
+          "name": "batch_presence_aware",
+          "in": "query",
+          "required": false,
+          "description": "Batch presence deliveries via subscription. Enabling changes the shape of `presence_change` events. See [batch presence](/docs/presence-and-status#batching)."
+        },
+        {
+          "name": "presence_sub",
+          "in": "query",
+          "required": false,
+          "description": "Only deliver presence events when requested by subscription. See [presence subscriptions](/docs/presence-and-status#subscriptions)."
+        }
+      ],
+      "body_fields": [],
+      "operation_id": "rtm_connect"
+    },
+    {
+      "method": "GET",
+      "path": "/dnd.teamInfo",
+      "summary": "Retrieves the Do Not Disturb status for up to 50 users on a team.",
+      "tags": [
+        "dnd"
+      ],
+      "parameters": [
+        {
+          "name": "token",
+          "in": "query",
+          "required": false,
+          "description": "Authentication token. Requires scope: `dnd:read`"
+        },
+        {
+          "name": "users",
+          "in": "query",
+          "required": false,
+          "description": "Comma-separated list of users to fetch Do Not Disturb status for"
+        }
+      ],
+      "body_fields": [],
+      "operation_id": "dnd_teamInfo"
+    },
+    {
+      "method": "GET",
+      "path": "/oauth.access",
+      "summary": "Exchanges a temporary OAuth verifier code for an access token.",
+      "tags": [
+        "oauth"
+      ],
+      "parameters": [
+        {
+          "name": "client_id",
+          "in": "query",
+          "required": false,
+          "description": "Issued when you created your application."
+        },
+        {
+          "name": "client_secret",
+          "in": "query",
+          "required": false,
+          "description": "Issued when you created your application."
+        },
+        {
+          "name": "code",
+          "in": "query",
+          "required": false,
+          "description": "The `code` param returned via the OAuth callback."
+        },
+        {
+          "name": "redirect_uri",
+          "in": "query",
+          "required": false,
+          "description": "This must match the originally submitted URI (if one was sent)."
+        },
+        {
+          "name": "single_channel",
+          "in": "query",
+          "required": false,
+          "description": "Request the user to add your app only to a single channel. Only valid with a [legacy workspace app](https://api.slack.com/legacy-workspace-apps)."
+        }
+      ],
+      "body_fields": [],
+      "operation_id": "oauth_access"
+    },
+    {
+      "method": "GET",
+      "path": "/views.update",
+      "summary": "Update an existing view.",
+      "tags": [
+        "views"
+      ],
+      "parameters": [
+        {
+          "name": "token",
+          "in": "header",
+          "required": true,
+          "description": "Authentication token. Requires scope: `none`"
+        },
+        {
+          "name": "view_id",
+          "in": "query",
+          "required": false,
+          "description": "A unique identifier of the view to be updated. Either `view_id` or `external_id` is required."
+        },
+        {
+          "name": "external_id",
+          "in": "query",
+          "required": false,
+          "description": "A unique identifier of the view set by the developer. Must be unique for all views on a team. Max length of 255 characters. Either `view_id` or `external_id` is required."
+        },
+        {
+          "name": "view",
+          "in": "query",
+          "required": false,
+          "description": "A [view object](/reference/surfaces/views). This must be a JSON-encoded string."
+        },
+        {
+          "name": "hash",
+          "in": "query",
+          "required": false,
+          "description": "A string that represents view state to protect against possible race conditions."
+        }
+      ],
+      "body_fields": [],
+      "operation_id": "views_update"
+    },
+    {
+      "method": "GET",
+      "path": "/reactions.get",
+      "summary": "Gets reactions for an item.",
+      "tags": [
+        "reactions"
+      ],
+      "parameters": [
+        {
+          "name": "token",
+          "in": "query",
+          "required": true,
+          "description": "Authentication token. Requires scope: `reactions:read`"
+        },
+        {
+          "name": "channel",
+          "in": "query",
+          "required": false,
+          "description": "Channel where the message to get reactions for was posted."
+        },
+        {
+          "name": "file",
+          "in": "query",
+          "required": false,
+          "description": "File to get reactions for."
+        },
+        {
+          "name": "file_comment",
+          "in": "query",
+          "required": false,
+          "description": "File comment to get reactions for."
+        },
+        {
+          "name": "full",
+          "in": "query",
+          "required": false,
+          "description": "If true always return the complete reaction list."
+        },
+        {
+          "name": "timestamp",
+          "in": "query",
+          "required": false,
+          "description": "Timestamp of the message to get reactions for."
+        }
+      ],
+      "body_fields": [],
+      "operation_id": "reactions_get"
+    },
+    {
+      "method": "GET",
+      "path": "/views.publish",
+      "summary": "Publish a static view for a User.",
+      "tags": [
+        "views"
+      ],
+      "parameters": [
+        {
+          "name": "token",
+          "in": "header",
+          "required": true,
+          "description": "Authentication token. Requires scope: `none`"
+        },
+        {
+          "name": "user_id",
+          "in": "query",
+          "required": true,
+          "description": "`id` of the user you want publish a view to."
+        },
+        {
+          "name": "view",
+          "in": "query",
+          "required": true,
+          "description": "A [view payload](/reference/surfaces/views). This must be a JSON-encoded string."
+        },
+        {
+          "name": "hash",
+          "in": "query",
+          "required": false,
+          "description": "A string that represents view state to protect against possible race conditions."
+        }
+      ],
+      "body_fields": [],
+      "operation_id": "views_publish"
+    },
+    {
+      "method": "GET",
+      "path": "/apps.uninstall",
+      "summary": "Uninstalls your app from a workspace.",
+      "tags": [
+        "apps"
+      ],
+      "parameters": [
+        {
+          "name": "token",
+          "in": "query",
+          "required": false,
+          "description": "Authentication token. Requires scope: `none`"
+        },
+        {
+          "name": "client_id",
+          "in": "query",
+          "required": false,
+          "description": "Issued when you created your application."
+        },
+        {
+          "name": "client_secret",
+          "in": "query",
+          "required": false,
+          "description": "Issued when you created your application."
+        }
+      ],
+      "body_fields": [],
+      "operation_id": "apps_uninstall"
+    },
+    {
+      "method": "GET",
+      "path": "/reactions.list",
+      "summary": "Lists reactions made by a user.",
+      "tags": [
+        "reactions"
+      ],
+      "parameters": [
+        {
+          "name": "token",
+          "in": "query",
+          "required": true,
+          "description": "Authentication token. Requires scope: `reactions:read`"
+        },
+        {
+          "name": "user",
+          "in": "query",
+          "required": false,
+          "description": "Show reactions made by this user. Defaults to the authed user."
+        },
+        {
+          "name": "full",
+          "in": "query",
+          "required": false,
+          "description": "If true always return the complete reaction list."
+        },
+        {
+          "name": "count",
+          "in": "query",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "page",
+          "in": "query",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "cursor",
+          "in": "query",
+          "required": false,
+          "description": "Parameter for pagination. Set `cursor` equal to the `next_cursor` attribute returned by the previous request's `response_metadata`. This parameter is optional, but pagination is mandatory: the default value simply fetches the first \"page\" of the collection. See [pagination](/docs/pagination) for more details."
+        },
+        {
+          "name": "limit",
+          "in": "query",
+          "required": false,
+          "description": "The maximum number of items to return. Fewer than the requested number of items may be returned, even if the end of the list hasn't been reached."
+        }
+      ],
+      "body_fields": [],
+      "operation_id": "reactions_list"
+    },
+    {
+      "method": "GET",
+      "path": "/reminders.info",
+      "summary": "Gets information about a reminder.",
+      "tags": [
+        "reminders"
+      ],
+      "parameters": [
+        {
+          "name": "token",
+          "in": "query",
+          "required": false,
+          "description": "Authentication token. Requires scope: `reminders:read`"
+        },
+        {
+          "name": "reminder",
+          "in": "query",
+          "required": false,
+          "description": "The ID of the reminder"
+        }
+      ],
+      "body_fields": [],
+      "operation_id": "reminders_info"
+    },
+    {
+      "method": "GET",
+      "path": "/reminders.list",
+      "summary": "Lists all reminders created by or for a given user.",
+      "tags": [
+        "reminders"
+      ],
+      "parameters": [
+        {
+          "name": "token",
+          "in": "query",
+          "required": false,
+          "description": "Authentication token. Requires scope: `reminders:read`"
+        }
+      ],
+      "body_fields": [],
+      "operation_id": "reminders_list"
+    },
+    {
+      "method": "GET",
+      "path": "/users.identity",
+      "summary": "Get a user's identity.",
+      "tags": [
+        "users"
+      ],
+      "parameters": [
+        {
+          "name": "token",
+          "in": "query",
+          "required": false,
+          "description": "Authentication token. Requires scope: `identity.basic`"
+        }
+      ],
+      "body_fields": [],
+      "operation_id": "users_identity"
+    },
+    {
+      "method": "GET",
+      "path": "/oauth.v2.access",
+      "summary": "Exchanges a temporary OAuth verifier code for an access token.",
+      "tags": [
+        "oauth.v2",
+        "oauth"
+      ],
+      "parameters": [
+        {
+          "name": "client_id",
+          "in": "query",
+          "required": false,
+          "description": "Issued when you created your application."
+        },
+        {
+          "name": "client_secret",
+          "in": "query",
+          "required": false,
+          "description": "Issued when you created your application."
+        },
+        {
+          "name": "code",
+          "in": "query",
+          "required": true,
+          "description": "The `code` param returned via the OAuth callback."
+        },
+        {
+          "name": "redirect_uri",
+          "in": "query",
+          "required": false,
+          "description": "This must match the originally submitted URI (if one was sent)."
+        }
+      ],
+      "body_fields": [],
+      "operation_id": "oauth_v2_access"
+    }
+  ],
+  "source_format": "openapi3"
+}

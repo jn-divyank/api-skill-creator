@@ -1,0 +1,832 @@
+{
+  "service_name": "github-v3-rest-api",
+  "base_url": "https://api.github.com",
+  "auth_type": "bearer",
+  "auth_header_format": "Bearer {token}",
+  "env_vars_needed": [
+    "GITHUB_V3_REST_API_URL",
+    "GITHUB_V3_REST_API_TOKEN"
+  ],
+  "endpoints": [
+    {
+      "method": "GET",
+      "path": "/",
+      "summary": "GitHub API Root",
+      "tags": [
+        "meta"
+      ],
+      "parameters": [],
+      "body_fields": [],
+      "operation_id": "meta/root"
+    },
+    {
+      "method": "GET",
+      "path": "/app",
+      "summary": "Get the authenticated app",
+      "tags": [
+        "apps"
+      ],
+      "parameters": [],
+      "body_fields": [],
+      "operation_id": "apps/get-authenticated"
+    },
+    {
+      "method": "GET",
+      "path": "/zen",
+      "summary": "Get the Zen of GitHub",
+      "tags": [
+        "meta"
+      ],
+      "parameters": [],
+      "body_fields": [],
+      "operation_id": "meta/get-zen"
+    },
+    {
+      "method": "GET",
+      "path": "/meta",
+      "summary": "Get GitHub meta information",
+      "tags": [
+        "meta"
+      ],
+      "parameters": [],
+      "body_fields": [],
+      "operation_id": "meta/get"
+    },
+    {
+      "method": "GET",
+      "path": "/user",
+      "summary": "Get the authenticated user",
+      "tags": [
+        "users"
+      ],
+      "parameters": [],
+      "body_fields": [],
+      "operation_id": "users/get-authenticated"
+    },
+    {
+      "method": "GET",
+      "path": "/feeds",
+      "summary": "Get feeds",
+      "tags": [
+        "activity"
+      ],
+      "parameters": [],
+      "body_fields": [],
+      "operation_id": "activity/get-feeds"
+    },
+    {
+      "method": "GET",
+      "path": "/gists",
+      "summary": "List gists for the authenticated user",
+      "tags": [
+        "gists"
+      ],
+      "parameters": [
+        {
+          "name": "",
+          "in": "query",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "",
+          "in": "query",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "",
+          "in": "query",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "body_fields": [],
+      "operation_id": "gists/list"
+    },
+    {
+      "method": "GET",
+      "path": "/users",
+      "summary": "List users",
+      "tags": [
+        "users"
+      ],
+      "parameters": [
+        {
+          "name": "",
+          "in": "query",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "",
+          "in": "query",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "body_fields": [],
+      "operation_id": "users/list"
+    },
+    {
+      "method": "GET",
+      "path": "/emojis",
+      "summary": "Get emojis",
+      "tags": [
+        "emojis"
+      ],
+      "parameters": [],
+      "body_fields": [],
+      "operation_id": "emojis/get"
+    },
+    {
+      "method": "GET",
+      "path": "/events",
+      "summary": "List public events",
+      "tags": [
+        "activity"
+      ],
+      "parameters": [
+        {
+          "name": "",
+          "in": "query",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "",
+          "in": "query",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "body_fields": [],
+      "operation_id": "activity/list-public-events"
+    },
+    {
+      "method": "GET",
+      "path": "/issues",
+      "summary": "List issues assigned to the authenticated user",
+      "tags": [
+        "issues"
+      ],
+      "parameters": [
+        {
+          "name": "filter",
+          "in": "query",
+          "required": false,
+          "description": "Indicates which sorts of issues to return. `assigned` means issues assigned to you. `created` means issues created by you. `mentioned` means issues mentioning you. `subscribed` means issues you're subscribed to updates for. `all` or `repos` means all issues you can see, regardless of participation or creation."
+        },
+        {
+          "name": "state",
+          "in": "query",
+          "required": false,
+          "description": "Indicates the state of the issues to return."
+        },
+        {
+          "name": "",
+          "in": "query",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "sort",
+          "in": "query",
+          "required": false,
+          "description": "What to sort results by."
+        },
+        {
+          "name": "",
+          "in": "query",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "",
+          "in": "query",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "collab",
+          "in": "query",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "orgs",
+          "in": "query",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "owned",
+          "in": "query",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "pulls",
+          "in": "query",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "",
+          "in": "query",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "",
+          "in": "query",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "body_fields": [],
+      "operation_id": "issues/list"
+    },
+    {
+      "method": "GET",
+      "path": "/octocat",
+      "summary": "Get Octocat",
+      "tags": [
+        "meta"
+      ],
+      "parameters": [
+        {
+          "name": "s",
+          "in": "query",
+          "required": false,
+          "description": "The words to show in Octocat's speech bubble"
+        }
+      ],
+      "body_fields": [],
+      "operation_id": "meta/get-octocat"
+    },
+    {
+      "method": "GET",
+      "path": "/licenses",
+      "summary": "Get all commonly used licenses",
+      "tags": [
+        "licenses"
+      ],
+      "parameters": [
+        {
+          "name": "featured",
+          "in": "query",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "",
+          "in": "query",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "",
+          "in": "query",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "body_fields": [],
+      "operation_id": "licenses/get-all-commonly-used"
+    },
+    {
+      "method": "GET",
+      "path": "/versions",
+      "summary": "Get all API versions",
+      "tags": [
+        "meta"
+      ],
+      "parameters": [],
+      "body_fields": [],
+      "operation_id": "meta/get-all-versions"
+    },
+    {
+      "method": "GET",
+      "path": "/user/keys",
+      "summary": "List public SSH keys for the authenticated user",
+      "tags": [
+        "users"
+      ],
+      "parameters": [
+        {
+          "name": "",
+          "in": "query",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "",
+          "in": "query",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "body_fields": [],
+      "operation_id": "users/list-public-ssh-keys-for-authenticated-user"
+    },
+    {
+      "method": "GET",
+      "path": "/user/orgs",
+      "summary": "List organizations for the authenticated user",
+      "tags": [
+        "orgs"
+      ],
+      "parameters": [
+        {
+          "name": "",
+          "in": "query",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "",
+          "in": "query",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "body_fields": [],
+      "operation_id": "orgs/list-for-authenticated-user"
+    },
+    {
+      "method": "GET",
+      "path": "/orgs/{org}",
+      "summary": "Get an organization",
+      "tags": [
+        "orgs"
+      ],
+      "parameters": [
+        {
+          "name": "",
+          "in": "query",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "body_fields": [],
+      "operation_id": "orgs/get"
+    },
+    {
+      "method": "GET",
+      "path": "/rate_limit",
+      "summary": "Get rate limit status for the authenticated user",
+      "tags": [
+        "rate-limit"
+      ],
+      "parameters": [],
+      "body_fields": [],
+      "operation_id": "rate-limit/get"
+    },
+    {
+      "method": "GET",
+      "path": "/user/repos",
+      "summary": "List repositories for the authenticated user",
+      "tags": [
+        "repos"
+      ],
+      "parameters": [
+        {
+          "name": "visibility",
+          "in": "query",
+          "required": false,
+          "description": "Limit results to repositories with the specified visibility."
+        },
+        {
+          "name": "affiliation",
+          "in": "query",
+          "required": false,
+          "description": "Comma-separated list of values. Can include:  \n * `owner`: Repositories that are owned by the authenticated user.  \n * `collaborator`: Repositories that the user has been added to as a collaborator.  \n * `organization_member`: Repositories that the user has access to through being a member of an organization. This includes every repository on every team that the user is on."
+        },
+        {
+          "name": "type",
+          "in": "query",
+          "required": false,
+          "description": "Limit results to repositories of the specified type. Will cause a `422` error if used in the same request as **visibility** or **affiliation**."
+        },
+        {
+          "name": "sort",
+          "in": "query",
+          "required": false,
+          "description": "The property to sort the results by."
+        },
+        {
+          "name": "direction",
+          "in": "query",
+          "required": false,
+          "description": "The order to sort by. Default: `asc` when using `full_name`, otherwise `desc`."
+        },
+        {
+          "name": "",
+          "in": "query",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "",
+          "in": "query",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "",
+          "in": "query",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "",
+          "in": "query",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "body_fields": [],
+      "operation_id": "repos/list-for-authenticated-user"
+    },
+    {
+      "method": "GET",
+      "path": "/user/teams",
+      "summary": "List teams for the authenticated user",
+      "tags": [
+        "teams"
+      ],
+      "parameters": [
+        {
+          "name": "",
+          "in": "query",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "",
+          "in": "query",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "body_fields": [],
+      "operation_id": "teams/list-for-authenticated-user"
+    },
+    {
+      "method": "GET",
+      "path": "/search/code",
+      "summary": "Search code",
+      "tags": [
+        "search"
+      ],
+      "parameters": [
+        {
+          "name": "q",
+          "in": "query",
+          "required": true,
+          "description": "The query contains one or more search keywords and qualifiers. Qualifiers allow you to limit your search to specific areas of GitHub. The REST API supports the same qualifiers as the web interface for GitHub. To learn more about the format of the query, see [Constructing a search query](https://docs.github.com/rest/reference/search#constructing-a-search-query). See \"[Searching code](https://docs.github.com/search-github/searching-on-github/searching-code)\" for a detailed list of qualifiers."
+        },
+        {
+          "name": "sort",
+          "in": "query",
+          "required": false,
+          "description": "Sorts the results of your query. Can only be `indexed`, which indicates how recently a file has been indexed by the GitHub search infrastructure. Default: [best match](https://docs.github.com/rest/reference/search#ranking-search-results)"
+        },
+        {
+          "name": "",
+          "in": "query",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "",
+          "in": "query",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "",
+          "in": "query",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "body_fields": [],
+      "operation_id": "search/code"
+    },
+    {
+      "method": "GET",
+      "path": "/user/blocks",
+      "summary": "List users blocked by the authenticated user",
+      "tags": [
+        "users"
+      ],
+      "parameters": [
+        {
+          "name": "",
+          "in": "query",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "",
+          "in": "query",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "body_fields": [],
+      "operation_id": "users/list-blocked-by-authenticated-user"
+    },
+    {
+      "method": "GET",
+      "path": "/user/emails",
+      "summary": "List email addresses for the authenticated user",
+      "tags": [
+        "users"
+      ],
+      "parameters": [
+        {
+          "name": "",
+          "in": "query",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "",
+          "in": "query",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "body_fields": [],
+      "operation_id": "users/list-emails-for-authenticated-user"
+    },
+    {
+      "method": "GET",
+      "path": "/user/issues",
+      "summary": "List user account issues assigned to the authenticated user",
+      "tags": [
+        "issues"
+      ],
+      "parameters": [
+        {
+          "name": "filter",
+          "in": "query",
+          "required": false,
+          "description": "Indicates which sorts of issues to return. `assigned` means issues assigned to you. `created` means issues created by you. `mentioned` means issues mentioning you. `subscribed` means issues you're subscribed to updates for. `all` or `repos` means all issues you can see, regardless of participation or creation."
+        },
+        {
+          "name": "state",
+          "in": "query",
+          "required": false,
+          "description": "Indicates the state of the issues to return."
+        },
+        {
+          "name": "",
+          "in": "query",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "sort",
+          "in": "query",
+          "required": false,
+          "description": "What to sort results by."
+        },
+        {
+          "name": "",
+          "in": "query",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "",
+          "in": "query",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "",
+          "in": "query",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "",
+          "in": "query",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "body_fields": [],
+      "operation_id": "issues/list-for-authenticated-user"
+    },
+    {
+      "method": "GET",
+      "path": "/gists/public",
+      "summary": "List public gists",
+      "tags": [
+        "gists"
+      ],
+      "parameters": [
+        {
+          "name": "",
+          "in": "query",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "",
+          "in": "query",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "",
+          "in": "query",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "body_fields": [],
+      "operation_id": "gists/list-public"
+    },
+    {
+      "method": "GET",
+      "path": "/repositories",
+      "summary": "List public repositories",
+      "tags": [
+        "repos"
+      ],
+      "parameters": [
+        {
+          "name": "",
+          "in": "query",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "body_fields": [],
+      "operation_id": "repos/list-public"
+    },
+    {
+      "method": "GET",
+      "path": "/search/users",
+      "summary": "Search users",
+      "tags": [
+        "search"
+      ],
+      "parameters": [
+        {
+          "name": "q",
+          "in": "query",
+          "required": true,
+          "description": "The query contains one or more search keywords and qualifiers. Qualifiers allow you to limit your search to specific areas of GitHub. The REST API supports the same qualifiers as the web interface for GitHub. To learn more about the format of the query, see [Constructing a search query](https://docs.github.com/rest/reference/search#constructing-a-search-query). See \"[Searching users](https://docs.github.com/search-github/searching-on-github/searching-users)\" for a detailed list of qualifiers."
+        },
+        {
+          "name": "sort",
+          "in": "query",
+          "required": false,
+          "description": "Sorts the results of your query by number of `followers` or `repositories`, or when the person `joined` GitHub. Default: [best match](https://docs.github.com/rest/reference/search#ranking-search-results)"
+        },
+        {
+          "name": "",
+          "in": "query",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "",
+          "in": "query",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "",
+          "in": "query",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "body_fields": [],
+      "operation_id": "search/users"
+    },
+    {
+      "method": "GET",
+      "path": "/user/starred",
+      "summary": "List repositories starred by the authenticated user",
+      "tags": [
+        "activity"
+      ],
+      "parameters": [
+        {
+          "name": "",
+          "in": "query",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "",
+          "in": "query",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "",
+          "in": "query",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "",
+          "in": "query",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "body_fields": [],
+      "operation_id": "activity/list-repos-starred-by-authenticated-user"
+    },
+    {
+      "method": "GET",
+      "path": "/gists/starred",
+      "summary": "List starred gists",
+      "tags": [
+        "gists"
+      ],
+      "parameters": [
+        {
+          "name": "",
+          "in": "query",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "",
+          "in": "query",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "",
+          "in": "query",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "body_fields": [],
+      "operation_id": "gists/list-starred"
+    },
+    {
+      "method": "GET",
+      "path": "/notifications",
+      "summary": "List notifications for the authenticated user",
+      "tags": [
+        "activity"
+      ],
+      "parameters": [
+        {
+          "name": "",
+          "in": "query",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "",
+          "in": "query",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "",
+          "in": "query",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "",
+          "in": "query",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "",
+          "in": "query",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "per_page",
+          "in": "query",
+          "required": false,
+          "description": "The number of results per page (max 50)."
+        }
+      ],
+      "body_fields": [],
+      "operation_id": "activity/list-notifications-for-authenticated-user"
+    }
+  ],
+  "source_format": "openapi3"
+}

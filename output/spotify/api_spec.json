@@ -1,0 +1,1018 @@
+{
+  "service_name": "spotify-web-api-with-fixes-and-improvements-from-sonallux",
+  "base_url": "https://api.spotify.com/v1",
+  "auth_type": "bearer",
+  "auth_header_format": "Bearer {token}",
+  "env_vars_needed": [
+    "SPOTIFY_WEB_API_WITH_FIXES_AND_IMPROVEMENTS_FROM_SONALLUX_URL",
+    "SPOTIFY_WEB_API_WITH_FIXES_AND_IMPROVEMENTS_FROM_SONALLUX_TOKEN"
+  ],
+  "endpoints": [
+    {
+      "method": "GET",
+      "path": "/me",
+      "summary": "Get Current User's Profile\n",
+      "tags": [
+        "Users"
+      ],
+      "parameters": [],
+      "body_fields": [],
+      "operation_id": "get-current-users-profile"
+    },
+    {
+      "method": "GET",
+      "path": "/shows",
+      "summary": "Get Several Shows\n",
+      "tags": [
+        "Shows"
+      ],
+      "parameters": [
+        {
+          "name": "",
+          "in": "query",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "",
+          "in": "query",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "body_fields": [],
+      "operation_id": "get-multiple-shows"
+    },
+    {
+      "method": "GET",
+      "path": "/albums",
+      "summary": "Get Several Albums\n",
+      "tags": [
+        "Albums"
+      ],
+      "parameters": [
+        {
+          "name": "",
+          "in": "query",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "",
+          "in": "query",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "body_fields": [],
+      "operation_id": "get-multiple-albums"
+    },
+    {
+      "method": "GET",
+      "path": "/search",
+      "summary": "Search for Item\n",
+      "tags": [
+        "Search"
+      ],
+      "parameters": [
+        {
+          "name": "q",
+          "in": "query",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "type",
+          "in": "query",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "",
+          "in": "query",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "limit",
+          "in": "query",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "offset",
+          "in": "query",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "include_external",
+          "in": "query",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "body_fields": [],
+      "operation_id": "search"
+    },
+    {
+      "method": "GET",
+      "path": "/tracks",
+      "summary": "Get Several Tracks\n",
+      "tags": [
+        "Tracks"
+      ],
+      "parameters": [
+        {
+          "name": "",
+          "in": "query",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "",
+          "in": "query",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "body_fields": [],
+      "operation_id": "get-several-tracks"
+    },
+    {
+      "method": "GET",
+      "path": "/artists",
+      "summary": "Get Several Artists\n",
+      "tags": [
+        "Artists"
+      ],
+      "parameters": [
+        {
+          "name": "ids",
+          "in": "query",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "body_fields": [],
+      "operation_id": "get-multiple-artists"
+    },
+    {
+      "method": "GET",
+      "path": "/markets",
+      "summary": "Get Available Markets\n",
+      "tags": [
+        "Markets"
+      ],
+      "parameters": [],
+      "body_fields": [],
+      "operation_id": "get-available-markets"
+    },
+    {
+      "method": "GET",
+      "path": "/chapters",
+      "summary": "Get Several Chapters\n",
+      "tags": [
+        "Chapters"
+      ],
+      "parameters": [
+        {
+          "name": "",
+          "in": "query",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "",
+          "in": "query",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "body_fields": [],
+      "operation_id": "get-several-chapters"
+    },
+    {
+      "method": "GET",
+      "path": "/episodes",
+      "summary": "Get Several Episodes\n",
+      "tags": [
+        "Episodes"
+      ],
+      "parameters": [
+        {
+          "name": "ids",
+          "in": "query",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "",
+          "in": "query",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "body_fields": [],
+      "operation_id": "get-multiple-episodes"
+    },
+    {
+      "method": "GET",
+      "path": "/me/shows",
+      "summary": "Get User's Saved Shows\n",
+      "tags": [
+        "Shows",
+        "Library"
+      ],
+      "parameters": [
+        {
+          "name": "",
+          "in": "query",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "",
+          "in": "query",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "body_fields": [],
+      "operation_id": "get-users-saved-shows"
+    },
+    {
+      "method": "GET",
+      "path": "/me/albums",
+      "summary": "Get User's Saved Albums\n",
+      "tags": [
+        "Albums",
+        "Library"
+      ],
+      "parameters": [
+        {
+          "name": "",
+          "in": "query",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "",
+          "in": "query",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "",
+          "in": "query",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "body_fields": [],
+      "operation_id": "get-users-saved-albums"
+    },
+    {
+      "method": "GET",
+      "path": "/me/player",
+      "summary": "Get Playback State\n",
+      "tags": [
+        "Player"
+      ],
+      "parameters": [
+        {
+          "name": "",
+          "in": "query",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "",
+          "in": "query",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "body_fields": [],
+      "operation_id": "get-information-about-the-users-current-playback"
+    },
+    {
+      "method": "GET",
+      "path": "/me/tracks",
+      "summary": "Get User's Saved Tracks\n",
+      "tags": [
+        "Tracks",
+        "Library"
+      ],
+      "parameters": [
+        {
+          "name": "",
+          "in": "query",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "",
+          "in": "query",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "",
+          "in": "query",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "body_fields": [],
+      "operation_id": "get-users-saved-tracks"
+    },
+    {
+      "method": "GET",
+      "path": "/audiobooks",
+      "summary": "Get Several Audiobooks\n",
+      "tags": [
+        "Audiobooks"
+      ],
+      "parameters": [
+        {
+          "name": "",
+          "in": "query",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "",
+          "in": "query",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "body_fields": [],
+      "operation_id": "get-multiple-audiobooks"
+    },
+    {
+      "method": "GET",
+      "path": "/shows/{id}",
+      "summary": "Get Show\n",
+      "tags": [
+        "Shows"
+      ],
+      "parameters": [
+        {
+          "name": "",
+          "in": "query",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "",
+          "in": "query",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "body_fields": [],
+      "operation_id": "get-a-show"
+    },
+    {
+      "method": "GET",
+      "path": "/albums/{id}",
+      "summary": "Get Album\n",
+      "tags": [
+        "Albums"
+      ],
+      "parameters": [
+        {
+          "name": "",
+          "in": "query",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "",
+          "in": "query",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "body_fields": [],
+      "operation_id": "get-an-album"
+    },
+    {
+      "method": "GET",
+      "path": "/me/episodes",
+      "summary": "Get User's Saved Episodes\n",
+      "tags": [
+        "Episodes",
+        "Library"
+      ],
+      "parameters": [
+        {
+          "name": "",
+          "in": "query",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "",
+          "in": "query",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "",
+          "in": "query",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "body_fields": [],
+      "operation_id": "get-users-saved-episodes"
+    },
+    {
+      "method": "GET",
+      "path": "/tracks/{id}",
+      "summary": "Get Track\n",
+      "tags": [
+        "Tracks"
+      ],
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "",
+          "in": "query",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "body_fields": [],
+      "operation_id": "get-track"
+    },
+    {
+      "method": "GET",
+      "path": "/artists/{id}",
+      "summary": "Get Artist\n",
+      "tags": [
+        "Artists"
+      ],
+      "parameters": [
+        {
+          "name": "",
+          "in": "query",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "body_fields": [],
+      "operation_id": "get-an-artist"
+    },
+    {
+      "method": "GET",
+      "path": "/me/following",
+      "summary": "Get Followed Artists\n",
+      "tags": [
+        "Users",
+        "Library",
+        "Artists"
+      ],
+      "parameters": [
+        {
+          "name": "type",
+          "in": "query",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "after",
+          "in": "query",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "",
+          "in": "query",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "body_fields": [],
+      "operation_id": "get-followed"
+    },
+    {
+      "method": "GET",
+      "path": "/me/playlists",
+      "summary": "Get Current User's Playlists\n",
+      "tags": [
+        "Playlists",
+        "Library"
+      ],
+      "parameters": [
+        {
+          "name": "",
+          "in": "query",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "offset",
+          "in": "query",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "body_fields": [],
+      "operation_id": "get-a-list-of-current-users-playlists"
+    },
+    {
+      "method": "GET",
+      "path": "/chapters/{id}",
+      "summary": "Get a Chapter\n",
+      "tags": [
+        "Chapters"
+      ],
+      "parameters": [
+        {
+          "name": "",
+          "in": "query",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "",
+          "in": "query",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "body_fields": [],
+      "operation_id": "get-a-chapter"
+    },
+    {
+      "method": "GET",
+      "path": "/episodes/{id}",
+      "summary": "Get Episode\n",
+      "tags": [
+        "Episodes"
+      ],
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "",
+          "in": "query",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "body_fields": [],
+      "operation_id": "get-an-episode"
+    },
+    {
+      "method": "GET",
+      "path": "/me/audiobooks",
+      "summary": "Get User's Saved Audiobooks\n",
+      "tags": [
+        "Audiobooks",
+        "Library"
+      ],
+      "parameters": [
+        {
+          "name": "",
+          "in": "query",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "",
+          "in": "query",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "body_fields": [],
+      "operation_id": "get-users-saved-audiobooks"
+    },
+    {
+      "method": "GET",
+      "path": "/me/top/tracks",
+      "summary": "Get User's Top Tracks\n",
+      "tags": [
+        "Users",
+        "Tracks",
+        "Library"
+      ],
+      "parameters": [
+        {
+          "name": "time_range",
+          "in": "query",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "",
+          "in": "query",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "",
+          "in": "query",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "body_fields": [],
+      "operation_id": "get-users-top-tracks"
+    },
+    {
+      "method": "GET",
+      "path": "/audio-features",
+      "summary": "Get Tracks' Audio Features\n",
+      "tags": [
+        "Tracks"
+      ],
+      "parameters": [
+        {
+          "name": "ids",
+          "in": "query",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "body_fields": [],
+      "operation_id": "get-several-audio-features"
+    },
+    {
+      "method": "GET",
+      "path": "/me/top/artists",
+      "summary": "Get User's Top Artists\n",
+      "tags": [
+        "Users",
+        "Artists",
+        "Library"
+      ],
+      "parameters": [
+        {
+          "name": "time_range",
+          "in": "query",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "",
+          "in": "query",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "",
+          "in": "query",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "body_fields": [],
+      "operation_id": "get-users-top-artists"
+    },
+    {
+      "method": "GET",
+      "path": "/audiobooks/{id}",
+      "summary": "Get an Audiobook\n",
+      "tags": [
+        "Audiobooks"
+      ],
+      "parameters": [
+        {
+          "name": "",
+          "in": "query",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "",
+          "in": "query",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "body_fields": [],
+      "operation_id": "get-an-audiobook"
+    },
+    {
+      "method": "GET",
+      "path": "/me/player/queue",
+      "summary": "Get the User's Queue\n",
+      "tags": [
+        "Player"
+      ],
+      "parameters": [],
+      "body_fields": [],
+      "operation_id": "get-queue"
+    },
+    {
+      "method": "GET",
+      "path": "/recommendations",
+      "summary": "Get Recommendations\n",
+      "tags": [
+        "Tracks"
+      ],
+      "parameters": [
+        {
+          "name": "limit",
+          "in": "query",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "",
+          "in": "query",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "seed_artists",
+          "in": "query",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "seed_genres",
+          "in": "query",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "seed_tracks",
+          "in": "query",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "min_acousticness",
+          "in": "query",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "max_acousticness",
+          "in": "query",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "target_acousticness",
+          "in": "query",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "min_danceability",
+          "in": "query",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "max_danceability",
+          "in": "query",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "target_danceability",
+          "in": "query",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "min_duration_ms",
+          "in": "query",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "max_duration_ms",
+          "in": "query",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "target_duration_ms",
+          "in": "query",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "min_energy",
+          "in": "query",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "max_energy",
+          "in": "query",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "target_energy",
+          "in": "query",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "min_instrumentalness",
+          "in": "query",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "max_instrumentalness",
+          "in": "query",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "target_instrumentalness",
+          "in": "query",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "min_key",
+          "in": "query",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "max_key",
+          "in": "query",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "target_key",
+          "in": "query",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "min_liveness",
+          "in": "query",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "max_liveness",
+          "in": "query",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "target_liveness",
+          "in": "query",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "min_loudness",
+          "in": "query",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "max_loudness",
+          "in": "query",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "target_loudness",
+          "in": "query",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "min_mode",
+          "in": "query",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "max_mode",
+          "in": "query",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "target_mode",
+          "in": "query",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "min_popularity",
+          "in": "query",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "max_popularity",
+          "in": "query",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "target_popularity",
+          "in": "query",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "min_speechiness",
+          "in": "query",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "max_speechiness",
+          "in": "query",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "target_speechiness",
+          "in": "query",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "min_tempo",
+          "in": "query",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "max_tempo",
+          "in": "query",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "target_tempo",
+          "in": "query",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "min_time_signature",
+          "in": "query",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "max_time_signature",
+          "in": "query",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "target_time_signature",
+          "in": "query",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "min_valence",
+          "in": "query",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "max_valence",
+          "in": "query",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "target_valence",
+          "in": "query",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "body_fields": [],
+      "operation_id": "get-recommendations"
+    }
+  ],
+  "source_format": "openapi3"
+}
