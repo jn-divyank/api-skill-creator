@@ -5,6 +5,12 @@ description: >-
   (OpenAPI, Swagger, Postman, DeepWiki, HTML) and generates a complete skill with
   SKILL.md + Python CLI script. Use when asked to create a new skill, generate an
   API integration, or update an existing skill from API docs.
+license: MIT
+compatibility: Requires Python 3.8+. Works with Claude Code and any Agent Skills-compatible tool.
+metadata:
+  author: api-skill-creator
+  version: "0.1.0"
+  tags: api, openapi, swagger, codegen, cli
 argument-hint: <API_DOC_URL> [options]
 allowed-tools: Bash(python3:*)
 disable-model-invocation: true
@@ -15,8 +21,27 @@ disable-model-invocation: true
 Generate complete, runnable Claude Code skills from API documentation URLs.
 Produces a SKILL.md + Python CLI with nested subcommand groups (like kubectl/aws-cli).
 
+## Quick Start (one command)
+
+If the user provides a URL via `$ARGUMENTS`, run the full pipeline in one step:
+
+```bash
+python3 ${CLAUDE_SKILL_DIR}/scripts/create_skill.py $ARGUMENTS
+```
+
+This fetches the API docs, infers the skill name, generates SKILL.md + CLI, and installs
+directly to `~/.claude/skills/<name>/`. That's it — skill is ready to use immediately.
+
+**Examples:**
+```bash
+python3 ${CLAUDE_SKILL_DIR}/scripts/create_skill.py https://petstore.swagger.io/v2/swagger.json
+python3 ${CLAUDE_SKILL_DIR}/scripts/create_skill.py https://api.example.com/openapi.json --name myapi
+python3 ${CLAUDE_SKILL_DIR}/scripts/create_skill.py https://api.example.com/openapi.json --multi-env --force
+```
+
 ## Scripts
 
+- `${CLAUDE_SKILL_DIR}/scripts/create_skill.py` — **One-step**: fetch + generate + install
 - `${CLAUDE_SKILL_DIR}/scripts/fetch_docs.py` — Fetch and parse API docs into structured JSON
 - `${CLAUDE_SKILL_DIR}/scripts/generate_skill.py` — Generate SKILL.md + Python CLI from JSON spec
 
@@ -71,11 +96,12 @@ Confirm: nested subcommand groups work, `check` command exists, all resources li
 
 ### Step 5: Inform the user
 
-Tell the user which environment variables to set in `~/.zshrc`:
-```
+Tell the user to add tokens to `~/.skills.env` (preferred — keeps secrets out of shell history and Claude context):
+```bash
 export SERVICE_URL=https://api.example.com
 export SERVICE_TOKEN=your-api-token
 ```
+The generated CLI loads `~/.skills.env` automatically. Set permissions with `chmod 600 ~/.skills.env`.
 
 ## Workflow B — Update Existing Skill
 

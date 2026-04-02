@@ -234,7 +234,7 @@ class TestGenerateSkill(unittest.TestCase):
         with open(cli_path) as f:
             code = f.read()
 
-        self.assertIn("_load_shell_environment", code)
+        self.assertIn("_load_environment", code)
         self.assertIn(".zshrc", code)
         self.assertIn(".bashrc", code)
 

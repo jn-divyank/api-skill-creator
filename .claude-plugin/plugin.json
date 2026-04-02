@@ -1,0 +1,11 @@
+{
+  "name": "api-skill-creator",
+  "description": "Generate Claude Code skills from any API documentation (OpenAPI, Swagger, Postman, HTML). Produces a SKILL.md + Python CLI with nested subcommand groups, auth handling, and ~/.skills.env token support.",
+  "version": "0.1.0",
+  "author": {
+    "name": "api-skill-creator"
+  },
+  "homepage": "https://github.com/your-org/api-skill-creator",
+  "repository": "https://github.com/your-org/api-skill-creator",
+  "license": "MIT"
+}
