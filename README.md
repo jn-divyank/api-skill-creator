@@ -4,6 +4,8 @@ A code generation tool that transforms API documentation into fully functional [
 
 Point it at any OpenAPI, Swagger, or Postman spec (or a URL), and it generates a ready-to-use Python CLI tool plus a `SKILL.md` definition file. No manual coding required.
 
+![demo](demo.gif)
+
 ---
 
 ## What it does
